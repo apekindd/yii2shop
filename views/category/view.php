@@ -2,6 +2,7 @@
 
 /* @var $this yii\web\View */
 use yii\helpers\Html;
+
 ?>
 
 <section id="advertisement">
@@ -86,16 +87,23 @@ use yii\helpers\Html;
                             <div class="clearfix"></div>
                             <?php } ?>
                         <?php } ?>
+                        <div class="clearfix"></div>
+                        <?php
+                            // display pagination
+                            echo yii\widgets\LinkPager::widget([
+                                'pagination' => $pages,
+                            ]);
+                         ?>
                     <?php }else{
                         echo "<h2>There are no products</h2>";
                     } ?>
                     <div class="clearfix"></div>
-                    <ul class="pagination">
+                    <!--<ul class="pagination">
                         <li class="active"><a href="">1</a></li>
                         <li><a href="">2</a></li>
                         <li><a href="">3</a></li>
                         <li><a href="">&raquo;</a></li>
-                    </ul>
+                    </ul>-->
                 </div><!--features_items-->
             </div>
         </div>

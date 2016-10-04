@@ -1,7 +1,7 @@
 <?php
 
 $params = require(__DIR__ . '/params.php');
-
+//terst
 $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),

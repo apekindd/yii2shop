@@ -1,6 +1,6 @@
 # phpstorm project files
 .idea
-
+.gitignore
 # netbeans project files
 nbproject
 
@@ -27,3 +27,4 @@ phpunit.phar
 /phpunit.xml
 
 config/db.php
+config/params.php

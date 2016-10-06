@@ -2,7 +2,6 @@
 
 
 namespace app\controllers;
-use app\models\Category;
 use app\models\Product;
 use Yii;
 
@@ -13,6 +12,12 @@ class ProductController extends AppController
 
         //Ленивая
         $product = Product::findOne($id);
+
+        if(empty($product)){
+            throw new \yii\web\HttpException(404, 'Такого товара не существует');
+        }
+
+
         //Жадная
         //$product = Product::find()->with('category')->where(['id'=>$id])->limit(1)->one();
         $hits = Product::find()->where(['hit'=>'1'])->limit(6)->all();

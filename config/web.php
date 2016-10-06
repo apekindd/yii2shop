@@ -46,6 +46,7 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 "product/<id:\d+>"=>'product/view',
+                "search"=>'category/search',
                 "category/<id:\d+>/page=<page:\d+>"=>'category/view',
                 "category/<id:\d+>"=>'category/view',
                 "<action(about|contact|login)>"=>"site/<action>",

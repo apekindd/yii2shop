@@ -15,14 +15,32 @@
 			type: 'GET',
 			success: function(res){
 				if(!res) alert('Err');
-				console.log(res);
-				//showCart(res);
+				showCart(res);
 			},
 			error: function(){
 				alert('Error!');
 			}
 		});
 	});
+
+	function showCart(cart){
+		$('#cart .modal-body').html(cart);
+		$('#cart').modal();
+	}
+
+	function clearCart(){
+		$.ajax({
+			url: '/cart/clear',
+			type: 'GET',
+			success: function(res){
+				if(!res) alert('Err');
+				showCart(res);
+			},
+			error: function(){
+				alert('Error!');
+			}
+		});
+	}
 
 	var RGBChange = function() {
 	  $('#RGB').css('background', 'rgb('+r.getValue()+','+g.getValue()+','+b.getValue()+')')

@@ -96,11 +96,11 @@ use yii\helpers\Html;
 								<span>
 									<span>US $<?= $product->price ?></span>
 									<label>Quantity:</label>
-									<input type="text" value="1" />
-									<button type="button" class="btn btn-fefault cart">
+									<input type="text" value="1" id="qty" />
+									<a href="<?= \yii\helpers\Url::to('cart/add','id'=>$product->id) ?>" data-id="<?= $product->id ?>" type="button" class="btn btn-fefault add-to-cart cart">
 										<i class="fa fa-shopping-cart"></i>
 Add to cart
-</button>
+</a>
 								</span>
 								<p><b>Brand:</b> <a href="<?= \yii\helpers\Url::to(['category/view', 'id'=>$product->category->id]) ?>"><?= $product->category->name ?></a></p>
 								<a href=""><img src="/images/product-details/share.png" class="share img-responsive"  alt="" /></a>

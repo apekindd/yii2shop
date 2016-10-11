@@ -27,6 +27,42 @@
 		$('#cart .modal-body').html(cart);
 		$('#cart').modal();
 	}
+/*
+	$(document).on('click', '.del-item', function(){
+	    alert();
+    });
+*/
+    $('#cart .modal-body').on('click','.del-item',function(){
+        var id = $(this).data('id');
+        $.ajax({
+            url: '/cart/del-item',
+            data: {id: id},
+            type: 'GET',
+            success: function(res){
+                if(!res) alert('Err');
+                showCart(res);
+            },
+            error: function(){
+                alert('Error!');
+            }
+        });
+    });
+
+	function getCart(){
+		$.ajax({
+			url: '/cart/show',
+			type: 'GET',
+			success: function(res){
+				if(!res) alert('Err');
+				showCart(res);
+			},
+			error: function(){
+				alert('Error!');
+			}
+		});
+
+		return false;
+	}
 
 	function clearCart(){
 		$.ajax({

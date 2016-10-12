@@ -5,6 +5,8 @@ namespace app\controllers;
 use Yii;
 use app\models\Product;
 use app\models\Cart;
+use app\models\Order;
+use app\models\OrderItems;
 
 
 class CartController extends AppController
@@ -58,7 +60,15 @@ class CartController extends AppController
     }
 
     public function actionView(){
+        $session = Yii::$app->session;
+        $session->open();
+        $this->setMeta('Корзина');
+        $order = new Order();
+        
+        if($order->load(Yii::$app->request->post())){
+            echo '<pre>';print_r(Yii::$app->request->post()); echo '</pre>';
+        }
 
-        return $this->render('view',compact('session'));
+        return $this->render('view',compact('session', 'order'));
     }
 }

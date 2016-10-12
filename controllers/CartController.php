@@ -58,7 +58,6 @@ class CartController extends AppController
 
         return $this->render('cart-modal', compact('session'));
     }
-
     public function actionView(){
         $session = Yii::$app->session;
         $session->open();
@@ -71,6 +70,11 @@ class CartController extends AppController
             if($order->save()){
                 $this->saveOrderItems($session['cart'], $order->id);
                 Yii::$app->session->setFlash('success','Ваш заказ принят, менеджер вскоре свяжется с Вами.');
+                Yii::$app->mailer->compose('order', compact('session'))
+                    ->setFrom(['test@mail.com' =>'yii2.loc'])
+                    ->setTo($order->email)
+                    ->setSubject('Заказ')
+                    ->send();
                 $session->remove('cart');
                 $session->remove('cart.qty');
                 $session->remove('cart.sum');

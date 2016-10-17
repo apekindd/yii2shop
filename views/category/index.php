@@ -111,6 +111,9 @@ use yii\helpers\Html;
                 </div>
             </div>
 
+            
+            <?php echo '<pre>';print_r(Yii::$app->user->identity); echo '</pre>'; ?>
+            
             <div class="col-sm-9 padding-right">
                 <?php if(!empty($hits)){?>
                 <div class="features_items"><!--features_items-->

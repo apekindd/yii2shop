@@ -13,7 +13,7 @@ mihaildev\elfinder\Assets::noConflict($this);
 ?>
 
 <div class="product-form">
-
+<?php echo '<pre>';print_r($model); echo '</pre>'; ?>
     <?php $form = ActiveForm::begin(); ?>
 
     <div class="form-group field-product-category_id has-success">

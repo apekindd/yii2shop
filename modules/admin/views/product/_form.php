@@ -13,8 +13,8 @@ mihaildev\elfinder\Assets::noConflict($this);
 ?>
 
 <div class="product-form">
-<?php echo '<pre>';print_r($model); echo '</pre>'; ?>
-    <?php $form = ActiveForm::begin(); ?>
+<?php //echo '<pre>';print_r($model); echo '</pre>'; ?>
+    <?php $form = ActiveForm::begin(['options'=>['enctype'=>'multipart/form-data']]); ?>
 
     <div class="form-group field-product-category_id has-success">
         <label class="control-label" for="product-category_id">Родительская категория</label>
@@ -40,7 +40,7 @@ mihaildev\elfinder\Assets::noConflict($this);
 
     <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'img')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'image')->fileInput() ?>
 
     <?= $form->field($model, 'hit')->checkbox([ '0'=>'Нет', '1'=>"Да", ]) ?>
 

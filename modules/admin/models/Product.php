@@ -56,7 +56,7 @@ class Product extends \yii\db\ActiveRecord
             [['name', 'keywords', 'description', 'img'], 'string', 'max' => 255],
 
             [['image'], 'file', 'extensions' => 'png, jpg'],
-            [['galery'], 'file', 'extensions' => 'png, jpg','maxFiles' => 4],
+           // [['galery'], 'file', 'extensions' => 'png, jpg','maxFiles' => 4],
         ];
     }
 
@@ -82,5 +82,15 @@ class Product extends \yii\db\ActiveRecord
             'new' => 'Новинка',
             'sale' => 'Распродажа',
         ];
+    }
+
+    public function upload(){
+        if($this->validate()){
+            $path = 'upload/store/'. $this->image->baseName . '.' . $this->image->extension;
+            $this->image->saveAs($path);
+            return true;
+        }else{
+            return false;
+        }
     }
 }

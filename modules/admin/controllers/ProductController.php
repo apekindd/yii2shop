@@ -92,6 +92,7 @@ class ProductController extends Controller
             if($model->image){
                 $model->upload();
             }
+            unset($model->image);
             $model->gallery = UploadedFile::getInstances($model,'gallery');
             if($model->gallery){
                 $model->uploadGallery();

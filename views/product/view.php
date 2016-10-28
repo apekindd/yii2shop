@@ -40,36 +40,43 @@ use yii\helpers\Html;
 					</div>
 				</div>
 				
-
+<?php
+	$mainImg = $product->getImage();
+ 	$gallery = $product->getImages();
+//echo '<pre>';print_r($gallery); echo '</pre>';
+?>
 
 				<div class="col-sm-9 padding-right">
 					<div class="product-details"><!--product-details-->
 						<div class="col-sm-5">
 							<div class="view-product">
-								<?= Html::img("@web/images/products/{$product->img}",['alt'=>$product->name]) ?>
+								<?= Html::img($mainImg->getUrl(),['alt'=>$product->name]) ?>
 								<h3>ZOOM</h3>
 							</div>
 							<div id="similar-product" class="carousel slide" data-ride="carousel">
 
 								  <!-- Wrapper for slides -->
-								    <div class="carousel-inner">
-										<div class="item active">
-										  <a href=""><img src="/images/product-details/similar1.jpg" alt=""></a>
-										  <a href=""><img src="/images/product-details/similar2.jpg" alt=""></a>
-										  <a href=""><img src="/images/product-details/similar3.jpg" alt=""></a>
-										</div>
-										<div class="item">
-										  <a href=""><img src="/images/product-details/similar1.jpg" alt=""></a>
-										  <a href=""><img src="/images/product-details/similar2.jpg" alt=""></a>
-										  <a href=""><img src="/images/product-details/similar3.jpg" alt=""></a>
-										</div>
-										<div class="item">
-										  <a href=""><img src="/images/product-details/similar1.jpg" alt=""></a>
-										  <a href=""><img src="/images/product-details/similar2.jpg" alt=""></a>
-										  <a href=""><img src="/images/product-details/similar3.jpg" alt=""></a>
-										</div>
+								<div class="carousel-inner">
+									<?php
+									$cnt=count($gallery);
+									$i=0;
+									foreach($gallery as $img){?>
+										<?php if($i%3==0){ ?>
+											<div class="<?= ($i==0) ? 'active' : '' ?> item">
+										<?php } ?>
+										<a href=""><?= Html::img($img->getUrl('84x85'),[]) ?></a>
 
-									</div>
+										<!--											<a href=""><img src="--><?//= $img->getUrl(); ?><!--" alt=""></a>-->
+										<?php
+										$i++;
+										if($i%3==0 || $i==$cnt){ ?>
+											</div>
+										<?php } ?>
+										<?php
+									}
+									?>
+								</div>
+
 
 								  <!-- Controls -->
 								  <a class="left item-control" href="#similar-product" data-slide="prev">

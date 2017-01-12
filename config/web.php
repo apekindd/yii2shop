@@ -72,8 +72,9 @@ $config = [
             'rules' => [
                 "product/<id:\d+>"=>'product/view',
                 "search"=>'category/search',
-                "category/<id:\d+>/page=<page:\d+>"=>'category/view',
-                "category/<id:\d+>"=>'category/view',
+                "category/<alias:[\w_\/-]+>/<id:\d+>"=>'category/product',
+                "category/<alias:[\w_\/-]+>/page=<page:\d+>"=>'category/view',
+                "category/<alias:[\w_\/-]+>"=>'category/view',
                 "<action(about|contact|login)>"=>"site/<action>",
             ],
         ],
